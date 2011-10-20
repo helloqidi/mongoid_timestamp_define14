@@ -1,5 +1,5 @@
 # encoding: utf-8
-require "mongoid/timestamps/created_on"
+require "mongoid/timestamps/created"
 require "mongoid/timestamps/updated"
 require "mongoid/timestamps/timeless"
 require "mongoid/timestamps/created_on"
