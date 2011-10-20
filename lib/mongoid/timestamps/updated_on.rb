@@ -8,9 +8,7 @@ module Mongoid #:nodoc:
 
       included do
         field :updated_on, :type => Time, :versioned => false
-        set_callback :save, :before, :set_updated_at, :if => Proc.new { |doc|
-          doc.timestamping? && (doc.new_record? || doc.changed?)
-        }
+        set_callback :save, :before, :set_updated_at
       end
 
       # Update the updated_at field on the Document to the current time.
