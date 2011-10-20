@@ -1,8 +1,10 @@
 # encoding: utf-8
-require "mongoid/timestamps/created"
+require "mongoid/timestamps/created_on"
 require "mongoid/timestamps/updated"
-
 require "mongoid/timestamps/timeless"
+require "mongoid/timestamps/created_on"
+require "mongoid/timestamps/updated_on"
+
 
 module Mongoid #:nodoc:
 
@@ -11,8 +13,8 @@ module Mongoid #:nodoc:
   module Timestamps
     extend ActiveSupport::Concern
     include Created
-    include Updated 
-    include Timeless
-
+    include Updated   
+    include CreatedOn
+    include UpdatedOn
   end
 end

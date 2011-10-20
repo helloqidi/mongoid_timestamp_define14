@@ -7,10 +7,8 @@ module Mongoid #:nodoc:
       extend ActiveSupport::Concern
 
       included do
-        field :updated_on, :type => Time, :versioned => false
-        set_callback :save, :before, :set_updated_at, :if => Proc.new { |doc|
-          doc.timestamping? && (doc.new_record? || doc.changed?)
-        }
+        field :updated_on, :type => Integer, :versioned => false
+        set_callback :save, :before, :set_updated_at
       end
 
       # Update the updated_at field on the Document to the current time.
@@ -19,7 +17,7 @@ module Mongoid #:nodoc:
       # @example Set the updated at time.
       #   person.set_updated_at
       def set_updated_at
-        self.updated_on = Time.now.utc unless self.updated_at_changed?
+        self.updated_on = Time.now.to_i
       end
     end
   end
