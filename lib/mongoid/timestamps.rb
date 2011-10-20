@@ -11,7 +11,8 @@ module Mongoid #:nodoc:
   module Timestamps
     extend ActiveSupport::Concern
     include Created
-    include Updated   
+    include Updated 
+    include Timeless
 
   end
 end
