@@ -8,7 +8,7 @@ module Mongoid #:nodoc:
 
       included do
         field :created_on, :type => Time
-        set_callback :create, :before, :set_created_at
+        set_callback :create, :before, :set_created_at, :if => :timestamping?
       end
 
       # Update the created_at field on the Document to the current time. This is
@@ -17,7 +17,7 @@ module Mongoid #:nodoc:
       # @example Set the created at time.
       #   person.set_created_at
       def set_created_at
-        self.created_on = Time.now.utc
+        self.created_on = Time.now.utc if !created_on
       end
     end
   end
